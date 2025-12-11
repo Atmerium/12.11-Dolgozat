@@ -14,3 +14,20 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Child {
+  childid        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  good  Boolean
+  toys   Toy[]
+}
+
+model Toy {
+  toyid      Int      @id @default(autoincrement())
+  name   String
+  material  String
+  weight  Decimal @db.Decimal(10, 2)
+  children   Child[]
+}
+
